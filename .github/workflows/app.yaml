@@ -20,15 +20,28 @@ jobs:
       - name: Display repository details
         run: echo "Repository ${{ github.repository }}"
 
+  manual-approval:
+    name: Manual Approval
+    runs-on: self-hosted
+    needs: build
+    if: success() # Only proceed if terraform-plan job succeeds
+    
+    permissions:
+      issues: write
+
+    steps:
+      - name: Await Manual Approval
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: rudik_rudik
+          minimum-approvals: 1
+          issue-title: "Manual Approval Required for Terraform Apply"
+          issue-body: "Please approve or deny the deployment."
+
   deploy:
     runs-on: self-hosted
+    needs: manual-approval
     steps:
-    - run: echo "Repository ${{ github.repository }}"
-
-  ManualApprove:
-    needs: build
-    environment: approvers
-    runs-on: self-hosted
-    steps:
-    - name: manual approve
-      run: echo "Manually approved"
+    - name: Manual approve
+      run: echo "Repository ${{ github.repository }}"
