@@ -25,4 +25,4 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Print "Hello from depoy task"
-        run: echo "Hello"
+        run: echo "Hello world"
