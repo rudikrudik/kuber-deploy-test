@@ -1,9 +1,11 @@
----
-name: Example 1
+name: CI/CD Pipeline
+
 on:
   workflow_dispatch:
+
+
 jobs:
-  my-job:
+  build:
     runs-on: self-hosted
     steps:
       - name: Print a message
@@ -12,3 +14,9 @@ jobs:
         run: echo "Running on ${{ runner.os }}"
       - name: Display repository details
         run: echo "Repository ${{ github.repository }}"
+
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Hello
+        run: echo "Hello"
