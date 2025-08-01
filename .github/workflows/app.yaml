@@ -27,8 +27,7 @@ jobs:
 
   ManualApprove:
     needs: build
-    environment:
-      name: approvers
+    environment: approvers
     runs-on: self-hosted
     steps:
     - name: manual approve
