@@ -11,4 +11,4 @@ jobs:
       - name: Show runner OS
         run: echo "Running on ${{ runner.os }}"
       - name: Display repository details
-        run: echo "Repository: ${{ github.repository }}, Branch: ${{ github.ref }}"
+        run: echo "Repository ${{ github.repository }}"
