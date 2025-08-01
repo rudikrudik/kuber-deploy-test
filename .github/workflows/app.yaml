@@ -4,6 +4,8 @@ on:
       - develop
       - stage
       - main
+    tags:
+      - 'v*' # Triggers when a tag starting with 'v' is pushed
 
 jobs:
   build:
