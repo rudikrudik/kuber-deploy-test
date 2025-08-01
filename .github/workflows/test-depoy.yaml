@@ -1,0 +1,14 @@
+---
+name: Example 1
+on:
+  workflow_dispatch:
+jobs:
+  my-job:
+    runs-on: self-hosted
+    steps:
+      - name: Print a message
+        run: echo "This is a message from my GitHub Actions job!"
+      - name: Show runner OS
+        run: echo "Running on ${{ runner.os }}"
+      - name: Display repository details
+        run: echo "Repository: ${{ github.repository }}, Branch: ${{ github.ref }}"
