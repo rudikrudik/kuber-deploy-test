@@ -5,7 +5,7 @@ on:
       - stage
       - main
     tags:
-      - 'v*' # Triggers when a tag starting with 'v' is pushed
+      - 'release-*' # Triggers when a tag starting with 'v' is pushed
 
 jobs:
   build:
@@ -23,5 +23,13 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - name: Print "Hello from depoy task"
-        run: echo "Hello world"
+    - run: echo "Repository ${{ github.repository }}"
+
+  ManualApprove:
+    needs: build
+    environment:
+      name: approvers
+    runs-on: self-hosted
+    steps:
+    - name: manual approve
+      run: echo "Manually approved"
