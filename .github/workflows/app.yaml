@@ -37,7 +37,7 @@ jobs:
           approvers: rudikrudik
           minimum-approvals: 1
           issue-title: "Manual Approval Required for Terraform Apply"
-          issue-body: "Please approve or deny the deployment."
+          issue-body: "Please approve or deny the d eployment."
           run: echo "${{ github.TOKEN }}"
 
   deploy:
